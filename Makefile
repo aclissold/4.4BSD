@@ -1,6 +1,12 @@
 CFLAGS=-Wall -g
-all: pipe
+all: pipe socketpair
 pipe:
-	cc pipe.c -o pipe.o
+	mkdir -p bin
+	cc src/pipe.c -o bin/pipe
+socketpair:
+	mkdir -p bin
+	cc src/socketpair.c -o bin/socketpair
 clean:
+	cd bin
 	rm -f pipe
+	rm -f socketpair
