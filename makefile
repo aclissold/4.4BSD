@@ -1,4 +1,6 @@
-make:
-	cc -o pipe.o pipe.c
+CFLAGS=-Wall -g
+all: pipe
+pipe:
+	cc pipe.c -o pipe.o
 clean:
-	rm -f pipe.o
+	rm -f pipe

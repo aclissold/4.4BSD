@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-#define DATA "Bright star, would I were streadfast as thou art . . ."
+#define DATA "Bright star, would I were steadfast as thou art . . ."
 
 /*
  * This program craetes a pipe, then forks. The Child communicates to the
@@ -10,14 +12,14 @@
  * (sockets[0]), but not vice versa.
  */
 
-main()
+int main()
 {
     int sockets[2], child;
 
     /* Create a pipe */
     if (pipe(sockets) < 0) {
         perror("opening stream socket pair");
-        exit(10);
+        exit(1);
     }
 
     if ((child = fork()) == -1)
@@ -38,4 +40,6 @@ main()
             perror("writing message");
         close(sockets[1]);
     }
+
+    return 0;
 }
