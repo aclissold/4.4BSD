@@ -26,6 +26,12 @@ int main(int argc, char *argv[])
     }
     /* Construct name of socket to send to. */
     name.sun_family = AF_UNIX;
+    if (argc != 2) {
+        printf("Usage:\n\n"
+                    "\tudgramsend pathname\n\n"
+                "where \"pathname\" is probably \"socket\".\n");
+        exit(1);
+    }
     strcpy(name.sun_path, argv[1]);
     /* Send message. */
     if (sendto(sock, DATA, sizeof(DATA), 0,
