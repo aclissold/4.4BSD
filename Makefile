@@ -1,5 +1,6 @@
 CFLAGS=-Wall -g
-all: pipe socketpair udgramrecv udgramsend idgramrecv idgramsend
+all: pipe socketpair udgramrecv udgramsend idgramrecv idgramsend streamwrite \
+		streamrecv streamselect
 pipe:
 	mkdir -p bin
 	cc src/pipe.c -o bin/pipe
@@ -18,6 +19,15 @@ idgramrecv:
 idgramsend:
 	mkdir -p bin
 	cc src/idgramsend.c -o bin/idgramsend
+streamwrite:
+	mkdir -p bin
+	cc src/streamwrite.c -o bin/streamwrite
+streamrecv:
+	mkdir -p bin
+	cc src/streamrecv.c -o bin/streamrecv
+streamselect:
+	mkdir -p bin
+	cc src/streamselect.c -o bin/streamselect
 clean:
 	cd bin
 	rm -f pipe
@@ -26,3 +36,6 @@ clean:
 	rm -f udgramsend
 	rm -f idgramrecv
 	rm -f idgramsend
+	rm -f streamrecv
+	rm -f streamwrite
+	rm -f streamselect
